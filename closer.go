@@ -6,8 +6,8 @@ import (
 	"time"
 )
 
-// NewCloser returns Closer and executes goroutine that awaits for ctx.Done() then run close(...) method
-func NewCloser(ctx context.Context, errFunc ErrFunc, timeout time.Duration) *Closer {
+// New returns Closer and executes goroutine that awaits for ctx.Done() then run close(...) method
+func New(ctx context.Context, errFunc ErrFunc, timeout time.Duration) *Closer {
 	c := &Closer{
 		done:       make(chan struct{}, 1),
 		closeFuncs: make([]CloseFunc, 0),
